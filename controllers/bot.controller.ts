@@ -86,34 +86,34 @@ export const BotController = {
     }
   },
 
-  private async handleStartCommand(chatId: number, userId: number)
-
+  private async handleStartCommand(chatId: number, userId: number) {
+   try {
       await TelegramService.sendMessage(
-        chatId,
-        `*Welcome to Temp Mail Bot!* 🚀\n\n` +
-        `_Generate disposable emails and receive messages directly here._`,
-        {
-          parse_mode: "Markdown",
-          reply_markup: KEYBOARDS.start
-        }
+         chatId,
+         `*Welcome to Temp Mail Bot!* 🚀\n\n` +
+         `_Generate disposable emails and receive messages directly here._`,
+         {
+            parse_mode: "Markdown",
+            reply_markup: KEYBOARDS.start
+         }
       );
 
       await TelegramService.sendMessage(
-        chatId,
-        "*Click below to generate a temporary email:* 🔐",
-        {
-          parse_mode: "Markdown",
-          reply_markup: KEYBOARDS.main
-        }
+         chatId,
+         "*Click below to generate a temporary email:* 🔐",
+         {
+            parse_mode: "Markdown",
+            reply_markup: KEYBOARDS.main
+         }
       );
-    } catch (error) {
+   } catch (error) {
       console.error("Start command error:", error);
       await TelegramService.sendMessage(
-        chatId,
-        "⚠️ Failed to initialize. Please try again."
+         chatId,
+         "⚠️ Failed to initialize. Please try again."
       );
-    }
-  },
+   }
+},
 
   private async handleUsersCommand(chatId: number) {
     try {
