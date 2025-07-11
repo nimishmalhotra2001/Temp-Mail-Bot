@@ -86,7 +86,7 @@ export const BotController = {
     }
   },
 
-  private async handleStartCommand(chatId: number, userId: number) {
+  private async handleStartCommand(chatId: number, userId: number)
 
       await TelegramService.sendMessage(
         chatId,
