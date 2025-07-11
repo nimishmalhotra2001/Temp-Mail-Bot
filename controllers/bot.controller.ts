@@ -87,20 +87,6 @@ export const BotController = {
   },
 
   private async handleStartCommand(chatId: number, userId: number) {
-    try {
-      const isSubscribed = await SubscriptionService.checkSubscription(userId);
-      
-      if (!isSubscribed) {
-        return TelegramService.sendMessage(
-          chatId,
-          "❌ *Please join our channel to use this bot:* [@NexonBots](https://t.me/NexonBots)",
-          {
-            parse_mode: "Markdown",
-            reply_markup: KEYBOARDS.joinChannel,
-            disable_web_page_preview: true
-          }
-        );
-      }
 
       await TelegramService.sendMessage(
         chatId,
